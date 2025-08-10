@@ -1,0 +1,225 @@
+/* Business Minimalist Style CSS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-tertiary: #f1f5f9;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-accent: #3b82f6;
+    --border-color: #e2e8f0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --glow-color: rgba(59, 130, 246, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--text-primary);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Main container */
+.main-container {
+    min-height: 100vh;
+    background: var(--bg-primary);
+    position: relative;
+}
+
+/* Minimalist background effect */
+.main-container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Title style */
+.dashboard-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 30px 0;
+    letter-spacing: -0.025em;
+}
+
+/* Card style */
+.data-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.data-card:hover {
+    border-color: var(--text-accent);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px);
+}
+
+/* Card title */
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    letter-spacing: -0.025em;
+}
+
+/* Data item */
+.data-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-family: 'Inter', sans-serif;
+}
+
+.data-label {
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.data-value {
+    color: var(--text-primary);
+    font-weight: 500;
+    text-align: right;
+}
+
+.data-value.positive {
+    color: #10b981;
+}
+
+.data-value.negative {
+    color: #ef4444;
+}
+
+/* Chart container */
+.chart-container {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 16px;
+    min-height: 400px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+/* Status indicator */
+.status-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--text-accent);
+    margin-right: 8px;
+}
+
+/* Update time */
+.update-time {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-top: 16px;
+    font-weight: 400;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .dashboard-title {
+        font-size: 2rem;
+    }
+    
+    .data-card {
+        margin: 10px 5px;
+        padding: 15px;
+    }
+    
+    .card-title {
+        font-size: 1.2rem;
+    }
+}
+
+/* Plotly chart customization */
+.js-plotly-plot .plotly .main-svg {
+    background-color: transparent !important;
+}
+
+/* Scrollbar style */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+/* News list style */
+.news-item {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.news-item:last-child {
+    border-bottom: none;
+}
+
+/* Loading animation */
+.loading {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    border-top-color: var(--text-accent);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* System information display */
+.system-info {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    white-space: pre-wrap;
+    overflow-x: auto;
+    font-size: 0.875rem;
+}
