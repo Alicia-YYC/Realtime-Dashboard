@@ -1,0 +1,1266 @@
+{
+  "schema_version": 1,
+  "mode": "controlled",
+  "started_at_utc": "2026-09-19T18:12:38.416586+00:00",
+  "finished_at_utc": "2026-09-19T18:13:07.884821+00:00",
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.39"
+  },
+  "settings": {
+    "simulated_io_delays_seconds": [
+      0.1,
+      0.2,
+      0.3,
+      0.4
+    ],
+    "network_requests": false
+  },
+  "methodology": {
+    "timed_scope": "DataManager.refresh_once including polling, snapshots, and history updates",
+    "comparison": "same polling implementation with sequential vs ThreadPoolExecutor execution",
+    "order": "alternates between sequential-first and concurrent-first",
+    "eligibility": "all sources healthy in BOTH cycles of a measured pair",
+    "formula": "100 * (1 - median(concurrent) / median(sequential)) over eligible pairs",
+    "limitations": "single-process microbenchmark; not a production throughput or SLA measurement"
+  },
+  "warmup_pairs": [
+    {
+      "order": [
+        "sequential",
+        "concurrent"
+      ],
+      "sequential": {
+        "elapsed_seconds": 1.0007120820000637,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      },
+      "concurrent": {
+        "elapsed_seconds": 0.40175267099994016,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      }
+    }
+  ],
+  "pairs": [
+    {
+      "order": [
+        "concurrent",
+        "sequential"
+      ],
+      "concurrent": {
+        "elapsed_seconds": 0.40134949200000847,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      },
+      "sequential": {
+        "elapsed_seconds": 1.0007459429998562,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "order": [
+        "sequential",
+        "concurrent"
+      ],
+      "sequential": {
+        "elapsed_seconds": 1.0007656799998585,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      },
+      "concurrent": {
+        "elapsed_seconds": 0.4017400549996637,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "order": [
+        "concurrent",
+        "sequential"
+      ],
+      "concurrent": {
+        "elapsed_seconds": 0.40160780099995463,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      },
+      "sequential": {
+        "elapsed_seconds": 1.0006978030000937,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "order": [
+        "sequential",
+        "concurrent"
+      ],
+      "sequential": {
+        "elapsed_seconds": 1.000813861000097,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      },
+      "concurrent": {
+        "elapsed_seconds": 0.4016939690000072,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "order": [
+        "concurrent",
+        "sequential"
+      ],
+      "concurrent": {
+        "elapsed_seconds": 0.40142917799994393,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      },
+      "sequential": {
+        "elapsed_seconds": 1.0008116120002342,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "order": [
+        "sequential",
+        "concurrent"
+      ],
+      "sequential": {
+        "elapsed_seconds": 1.0006682219996037,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      },
+      "concurrent": {
+        "elapsed_seconds": 0.4016117660003147,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "order": [
+        "concurrent",
+        "sequential"
+      ],
+      "concurrent": {
+        "elapsed_seconds": 0.40176558300026954,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      },
+      "sequential": {
+        "elapsed_seconds": 1.0009158430002572,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "order": [
+        "sequential",
+        "concurrent"
+      ],
+      "sequential": {
+        "elapsed_seconds": 1.003319779999856,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 203,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      },
+      "concurrent": {
+        "elapsed_seconds": 0.4019493429996146,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "order": [
+        "concurrent",
+        "sequential"
+      ],
+      "concurrent": {
+        "elapsed_seconds": 0.4016999200002829,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      },
+      "sequential": {
+        "elapsed_seconds": 1.0007794789999025,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "order": [
+        "sequential",
+        "concurrent"
+      ],
+      "sequential": {
+        "elapsed_seconds": 1.0007250359999489,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      },
+      "concurrent": {
+        "elapsed_seconds": 0.401961270999891,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "order": [
+        "concurrent",
+        "sequential"
+      ],
+      "concurrent": {
+        "elapsed_seconds": 0.40142836499990153,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      },
+      "sequential": {
+        "elapsed_seconds": 1.0011026189999939,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "order": [
+        "sequential",
+        "concurrent"
+      ],
+      "sequential": {
+        "elapsed_seconds": 1.0007912320002106,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      },
+      "concurrent": {
+        "elapsed_seconds": 0.4017221320000317,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 201,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "order": [
+        "concurrent",
+        "sequential"
+      ],
+      "concurrent": {
+        "elapsed_seconds": 0.40173932300012893,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      },
+      "sequential": {
+        "elapsed_seconds": 1.0007011889997557,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "order": [
+        "sequential",
+        "concurrent"
+      ],
+      "sequential": {
+        "elapsed_seconds": 1.000769560000208,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      },
+      "concurrent": {
+        "elapsed_seconds": 0.4013703240002542,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "order": [
+        "concurrent",
+        "sequential"
+      ],
+      "concurrent": {
+        "elapsed_seconds": 0.4020708210000521,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 401,
+            "message": null
+          }
+        }
+      },
+      "sequential": {
+        "elapsed_seconds": 1.0007203649997791,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "order": [
+        "sequential",
+        "concurrent"
+      ],
+      "sequential": {
+        "elapsed_seconds": 1.0016135000000759,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 401,
+            "message": null
+          }
+        }
+      },
+      "concurrent": {
+        "elapsed_seconds": 0.4017763960000593,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "order": [
+        "concurrent",
+        "sequential"
+      ],
+      "concurrent": {
+        "elapsed_seconds": 0.4015526029998,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      },
+      "sequential": {
+        "elapsed_seconds": 1.002861930999643,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 302,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "order": [
+        "sequential",
+        "concurrent"
+      ],
+      "sequential": {
+        "elapsed_seconds": 1.0048060320000332,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 103,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 301,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      },
+      "concurrent": {
+        "elapsed_seconds": 0.40632097200023054,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 101,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 201,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 401,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "order": [
+        "concurrent",
+        "sequential"
+      ],
+      "concurrent": {
+        "elapsed_seconds": 0.4015866089998781,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      },
+      "sequential": {
+        "elapsed_seconds": 1.0009319900000264,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "order": [
+        "sequential",
+        "concurrent"
+      ],
+      "sequential": {
+        "elapsed_seconds": 1.000744252000004,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      },
+      "concurrent": {
+        "elapsed_seconds": 0.4019333569999617,
+        "all_healthy": true,
+        "sources": {
+          "simulated_1": {
+            "status": "healthy",
+            "latency_ms": 100,
+            "message": null
+          },
+          "simulated_2": {
+            "status": "healthy",
+            "latency_ms": 200,
+            "message": null
+          },
+          "simulated_3": {
+            "status": "healthy",
+            "latency_ms": 300,
+            "message": null
+          },
+          "simulated_4": {
+            "status": "healthy",
+            "latency_ms": 400,
+            "message": null
+          }
+        }
+      }
+    }
+  ],
+  "summary": {
+    "measured_pairs": 20,
+    "eligible_pairs": 20,
+    "excluded_pairs": 0,
+    "source_status_counts": {
+      "sequential": {
+        "healthy": 80
+      },
+      "concurrent": {
+        "healthy": 80
+      }
+    },
+    "sequential_median_seconds": 1.0007853555000565,
+    "concurrent_median_seconds": 0.4017110260001573,
+    "median_refresh_reduction_percent": 59.86042123893422,
+    "speedup": 2.4913066625651066
+  }
+}

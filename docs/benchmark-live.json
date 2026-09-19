@@ -1,0 +1,403 @@
+{
+  "schema_version": 1,
+  "mode": "live",
+  "started_at_utc": "2026-09-19T18:13:34.151856+00:00",
+  "finished_at_utc": "2026-09-19T18:15:14.066052+00:00",
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.39"
+  },
+  "settings": {
+    "stock_symbols": [
+      "AAPL",
+      "GOOGL",
+      "MSFT",
+      "NVDA"
+    ],
+    "request_timeout_seconds": 8.0,
+    "weather_location": "Pittsburgh",
+    "weather_latitude": 40.4406,
+    "weather_longitude": -79.9959,
+    "hacker_news_story_limit": 5,
+    "pause_between_cycles_seconds": 5.0
+  },
+  "methodology": {
+    "timed_scope": "DataManager.refresh_once including polling, snapshots, and history updates",
+    "comparison": "same polling implementation with sequential vs ThreadPoolExecutor execution",
+    "order": "alternates between sequential-first and concurrent-first",
+    "eligibility": "all sources healthy in BOTH cycles of a measured pair",
+    "formula": "100 * (1 - median(concurrent) / median(sequential)) over eligible pairs",
+    "limitations": "single-process microbenchmark; not a production throughput or SLA measurement"
+  },
+  "warmup_pairs": [
+    {
+      "order": [
+        "sequential",
+        "concurrent"
+      ],
+      "sequential": {
+        "elapsed_seconds": 20.74353664099999,
+        "all_healthy": true,
+        "sources": {
+          "weather": {
+            "status": "healthy",
+            "latency_ms": 5208,
+            "message": null
+          },
+          "stocks": {
+            "status": "healthy",
+            "latency_ms": 5780,
+            "message": null
+          },
+          "crypto": {
+            "status": "healthy",
+            "latency_ms": 4460,
+            "message": null
+          },
+          "news": {
+            "status": "healthy",
+            "latency_ms": 5295,
+            "message": null
+          }
+        }
+      },
+      "concurrent": {
+        "elapsed_seconds": 8.16480144299976,
+        "all_healthy": true,
+        "sources": {
+          "weather": {
+            "status": "healthy",
+            "latency_ms": 5119,
+            "message": null
+          },
+          "news": {
+            "status": "healthy",
+            "latency_ms": 5468,
+            "message": null
+          },
+          "crypto": {
+            "status": "healthy",
+            "latency_ms": 6789,
+            "message": null
+          },
+          "stocks": {
+            "status": "healthy",
+            "latency_ms": 8162,
+            "message": null
+          }
+        }
+      }
+    }
+  ],
+  "pairs": [
+    {
+      "order": [
+        "concurrent",
+        "sequential"
+      ],
+      "concurrent": {
+        "elapsed_seconds": 0.692241784000089,
+        "all_healthy": true,
+        "sources": {
+          "weather": {
+            "status": "healthy",
+            "latency_ms": 182,
+            "message": null
+          },
+          "news": {
+            "status": "healthy",
+            "latency_ms": 685,
+            "message": null
+          },
+          "crypto": {
+            "status": "healthy",
+            "latency_ms": 61,
+            "message": null
+          },
+          "stocks": {
+            "status": "healthy",
+            "latency_ms": 207,
+            "message": null
+          }
+        }
+      },
+      "sequential": {
+        "elapsed_seconds": 2.326378661000035,
+        "all_healthy": true,
+        "sources": {
+          "weather": {
+            "status": "healthy",
+            "latency_ms": 179,
+            "message": null
+          },
+          "stocks": {
+            "status": "healthy",
+            "latency_ms": 656,
+            "message": null
+          },
+          "crypto": {
+            "status": "healthy",
+            "latency_ms": 33,
+            "message": null
+          },
+          "news": {
+            "status": "healthy",
+            "latency_ms": 1458,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "order": [
+        "sequential",
+        "concurrent"
+      ],
+      "sequential": {
+        "elapsed_seconds": 1.1111479180003698,
+        "all_healthy": true,
+        "sources": {
+          "weather": {
+            "status": "healthy",
+            "latency_ms": 194,
+            "message": null
+          },
+          "stocks": {
+            "status": "healthy",
+            "latency_ms": 285,
+            "message": null
+          },
+          "crypto": {
+            "status": "healthy",
+            "latency_ms": 38,
+            "message": null
+          },
+          "news": {
+            "status": "healthy",
+            "latency_ms": 594,
+            "message": null
+          }
+        }
+      },
+      "concurrent": {
+        "elapsed_seconds": 0.8390642919998754,
+        "all_healthy": true,
+        "sources": {
+          "weather": {
+            "status": "healthy",
+            "latency_ms": 181,
+            "message": null
+          },
+          "news": {
+            "status": "healthy",
+            "latency_ms": 830,
+            "message": null
+          },
+          "crypto": {
+            "status": "healthy",
+            "latency_ms": 109,
+            "message": null
+          },
+          "stocks": {
+            "status": "healthy",
+            "latency_ms": 530,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "order": [
+        "concurrent",
+        "sequential"
+      ],
+      "concurrent": {
+        "elapsed_seconds": 0.6832091699998273,
+        "all_healthy": false,
+        "sources": {
+          "weather": {
+            "status": "healthy",
+            "latency_ms": 185,
+            "message": null
+          },
+          "news": {
+            "status": "healthy",
+            "latency_ms": 676,
+            "message": null
+          },
+          "crypto": {
+            "status": "stale",
+            "latency_ms": 40,
+            "message": "429 Client Error: Too Many Requests for url: https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true"
+          },
+          "stocks": {
+            "status": "healthy",
+            "latency_ms": 316,
+            "message": null
+          }
+        }
+      },
+      "sequential": {
+        "elapsed_seconds": 1.3871683219999795,
+        "all_healthy": false,
+        "sources": {
+          "weather": {
+            "status": "healthy",
+            "latency_ms": 186,
+            "message": null
+          },
+          "stocks": {
+            "status": "healthy",
+            "latency_ms": 549,
+            "message": null
+          },
+          "crypto": {
+            "status": "stale",
+            "latency_ms": 21,
+            "message": "429 Client Error: Too Many Requests for url: https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true"
+          },
+          "news": {
+            "status": "healthy",
+            "latency_ms": 631,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "order": [
+        "sequential",
+        "concurrent"
+      ],
+      "sequential": {
+        "elapsed_seconds": 1.094150190000164,
+        "all_healthy": false,
+        "sources": {
+          "weather": {
+            "status": "healthy",
+            "latency_ms": 198,
+            "message": null
+          },
+          "stocks": {
+            "status": "healthy",
+            "latency_ms": 244,
+            "message": null
+          },
+          "crypto": {
+            "status": "stale",
+            "latency_ms": 24,
+            "message": "429 Client Error: Too Many Requests for url: https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true"
+          },
+          "news": {
+            "status": "healthy",
+            "latency_ms": 628,
+            "message": null
+          }
+        }
+      },
+      "concurrent": {
+        "elapsed_seconds": 0.6805268549996981,
+        "all_healthy": false,
+        "sources": {
+          "weather": {
+            "status": "healthy",
+            "latency_ms": 186,
+            "message": null
+          },
+          "news": {
+            "status": "healthy",
+            "latency_ms": 676,
+            "message": null
+          },
+          "crypto": {
+            "status": "stale",
+            "latency_ms": 34,
+            "message": "429 Client Error: Too Many Requests for url: https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true"
+          },
+          "stocks": {
+            "status": "healthy",
+            "latency_ms": 507,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "order": [
+        "concurrent",
+        "sequential"
+      ],
+      "concurrent": {
+        "elapsed_seconds": 0.6641926820002482,
+        "all_healthy": false,
+        "sources": {
+          "weather": {
+            "status": "healthy",
+            "latency_ms": 183,
+            "message": null
+          },
+          "news": {
+            "status": "healthy",
+            "latency_ms": 660,
+            "message": null
+          },
+          "crypto": {
+            "status": "stale",
+            "latency_ms": 53,
+            "message": "429 Client Error: Too Many Requests for url: https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true"
+          },
+          "stocks": {
+            "status": "healthy",
+            "latency_ms": 339,
+            "message": null
+          }
+        }
+      },
+      "sequential": {
+        "elapsed_seconds": 1.4543758690001596,
+        "all_healthy": false,
+        "sources": {
+          "weather": {
+            "status": "healthy",
+            "latency_ms": 182,
+            "message": null
+          },
+          "stocks": {
+            "status": "healthy",
+            "latency_ms": 569,
+            "message": null
+          },
+          "crypto": {
+            "status": "stale",
+            "latency_ms": 22,
+            "message": "429 Client Error: Too Many Requests for url: https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true"
+          },
+          "news": {
+            "status": "healthy",
+            "latency_ms": 682,
+            "message": null
+          }
+        }
+      }
+    }
+  ],
+  "summary": {
+    "measured_pairs": 5,
+    "eligible_pairs": 2,
+    "excluded_pairs": 3,
+    "source_status_counts": {
+      "sequential": {
+        "healthy": 17,
+        "stale": 3
+      },
+      "concurrent": {
+        "healthy": 17,
+        "stale": 3
+      }
+    },
+    "sequential_median_seconds": 1.7187632895002025,
+    "concurrent_median_seconds": 0.7656530379999822,
+    "median_refresh_reduction_percent": 55.45325859137789,
+    "speedup": 2.2448331087275624
+  }
+}
