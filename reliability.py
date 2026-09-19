@@ -93,16 +93,23 @@ class DataManager:
                 message=str(exc),
             )
 
-    def refresh_once(self) -> dict[str, SourceSnapshot]:
+    def refresh_once(self, *, concurrent: bool = True) -> dict[str, SourceSnapshot]:
+        """Refresh all sources; sequential mode provides a benchmark baseline."""
         completed: dict[str, SourceSnapshot] = {}
-        with ThreadPoolExecutor(max_workers=max(1, len(self.sources))) as executor:
-            futures = {
-                executor.submit(self._fetch_one, name, fetcher): name
+        if concurrent:
+            with ThreadPoolExecutor(max_workers=max(1, len(self.sources))) as executor:
+                futures = {
+                    executor.submit(self._fetch_one, name, fetcher): name
+                    for name, fetcher in self.sources.items()
+                }
+                for future in as_completed(futures):
+                    snapshot = future.result()
+                    completed[snapshot.source] = snapshot
+        else:
+            completed = {
+                name: self._fetch_one(name, fetcher)
                 for name, fetcher in self.sources.items()
             }
-            for future in as_completed(futures):
-                snapshot = future.result()
-                completed[snapshot.source] = snapshot
 
         with self._lock:
             self._snapshots.update(completed)
@@ -149,4 +156,3 @@ class DataManager:
             elapsed = perf_counter() - started
             wait_seconds = max(0, self.poll_interval_seconds - elapsed)
             self._stop_event.wait(wait_seconds)
-
